@@ -1,0 +1,195 @@
+{
+  "info": {
+    "name": "NIVELA API",
+    "description": "Collection de testes da API do sistema NIVELA – plataforma de onboarding corporativo.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Usuários",
+      "item": [
+        {
+          "name": "Listar todos os usuários",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/usuarios",
+            "description": "Retorna a lista de todos os usuários cadastrados no sistema."
+          }
+        },
+        {
+          "name": "Buscar usuário por ID",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/usuarios/1",
+            "description": "Retorna os dados de um usuário específico. Altere o ID na URL conforme necessário."
+          }
+        },
+        {
+          "name": "Criar novo usuário",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/usuarios",
+            "description": "Cadastra um novo usuário no sistema.",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva\",\n  \"email\": \"joao.silva@conecta.com\",\n  \"senha\": \"senha123\",\n  \"tipo_usuario\": \"colaborador\",\n  \"id_empresa\": 1,\n  \"id_area\": 1,\n  \"id_cargo\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar usuário",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/api/usuarios/1",
+            "description": "Atualiza os dados de um usuário existente. Altere o ID na URL conforme necessário.",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Marina Ribeiro Silva\",\n  \"status\": \"ativo\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Remover usuário",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/api/usuarios/5",
+            "description": "Remove um usuário do sistema. Altere o ID na URL conforme necessário."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Trilhas",
+      "item": [
+        {
+          "name": "Listar todas as trilhas",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/trilhas",
+            "description": "Retorna todas as trilhas com o nome do gestor e cargo vinculado."
+          }
+        },
+        {
+          "name": "Buscar trilha com módulos",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/trilhas/1",
+            "description": "Retorna os dados da trilha e seus módulos. Altere o ID na URL conforme necessário."
+          }
+        },
+        {
+          "name": "Criar nova trilha",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/trilhas",
+            "description": "Cria uma nova trilha de onboarding.",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Integração para RH\",\n  \"descricao\": \"Trilha de onboarding para colaboradores da área de Recursos Humanos.\",\n  \"id_empresa\": 1,\n  \"id_gestor\": 1,\n  \"id_cargo\": 2\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar trilha",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/api/trilhas/1",
+            "description": "Atualiza informações de uma trilha existente. Altere o ID na URL conforme necessário.",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Integração para Desenvolvedores – Atualizada\",\n  \"status\": \"ativa\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Remover trilha",
+          "request": {
+            "method": "DELETE",
+            "url": "{{base_url}}/api/trilhas/3",
+            "description": "Remove uma trilha do sistema. Altere o ID na URL conforme necessário."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Progresso",
+      "item": [
+        {
+          "name": "Ver progresso do colaborador",
+          "request": {
+            "method": "GET",
+            "url": "{{base_url}}/api/progresso/trilha/2",
+            "description": "Retorna o progresso do colaborador em todas as suas trilhas. Altere o ID do usuário na URL conforme necessário."
+          }
+        },
+        {
+          "name": "Iniciar trilha para colaborador",
+          "request": {
+            "method": "POST",
+            "url": "{{base_url}}/api/progresso/trilha",
+            "description": "Registra o início de um colaborador em uma trilha.",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_usuario\": 3,\n  \"id_trilha\": 1\n}"
+            }
+          }
+        },
+        {
+          "name": "Atualizar progresso",
+          "request": {
+            "method": "PUT",
+            "url": "{{base_url}}/api/progresso/trilha/1",
+            "description": "Atualiza o percentual de conclusão de uma trilha. Altere o ID na URL conforme necessário.",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"percentual_conclusao\": 100,\n  \"status\": \"concluido\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
