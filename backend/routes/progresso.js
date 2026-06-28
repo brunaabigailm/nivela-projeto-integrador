@@ -6,7 +6,8 @@ const db      = require('../db');
 router.get('/trilha/:id_usuario', async (req, res) => {
   try {
     const [rows] = await db.query(`
-      SELECT pt.id_progresso_trilha, pt.percentual_conclusao, pt.status,
+      SELECT pt.id_progresso_trilha, pt.id_trilha,
+             pt.percentual_conclusao, pt.status,
              pt.data_inicio, pt.data_conclusao,
              t.titulo AS trilha
       FROM progresso_trilha pt

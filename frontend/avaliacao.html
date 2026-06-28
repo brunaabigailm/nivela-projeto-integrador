@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIVELA — Avaliação</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="avaliacao-topbar">
+    <a class="botao-voltar" href="home-colaborador.html" aria-label="Sair">←</a>
+    <strong>Sair da Avaliação</strong>
+    <div class="avaliacao-timer" id="timer">⏰ 10:00</div>
+  </header>
+
+  <main class="container avaliacao-container">
+    <div class="avaliacao-progresso">
+      <div class="avaliacao-progresso-cabecalho">
+        <span><strong id="questao-atual">Questão 1</strong> de <span id="total-questoes">5</span></span>
+        <strong id="percentual-questao">20%</strong>
+      </div>
+      <div class="barra-progresso avaliacao-barra">
+        <span class="barra-progresso-preenchida" id="barra-avaliacao" style="width: 20%"></span>
+      </div>
+    </div>
+
+    <section class="card avaliacao-card">
+      <h2 id="enunciado">Carregando...</h2>
+      <div class="alternativas" id="alternativas"></div>
+    </section>
+
+    <div class="avaliacao-acoes">
+      <button class="btn btn-secondary" id="btn-anterior" disabled>Anterior</button>
+      <button class="btn btn-primary" id="btn-proxima" disabled>Próxima</button>
+    </div>
+
+    <section class="card">
+      <h3 class="bloco-titulo">Navegação Rápida</h3>
+      <div class="navegacao-rapida" id="navegacao-rapida"></div>
+    </section>
+
+    <p id="avaliacao-mensagem" class="mensagem-sucesso" hidden></p>
+  </main>
+
+  <script src="js/avaliacao.js"></script>
+</body>
+</html>

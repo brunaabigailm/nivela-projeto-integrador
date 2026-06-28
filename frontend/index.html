@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIVELA — Entrar</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="tela-login">
+  <main class="card login-card">
+    <div class="login-marca">
+      <div class="login-logo">N</div>
+      <h1 class="login-titulo">NIVELA</h1>
+      <p class="login-subtitulo">Plataforma de Onboarding Corporativo</p>
+    </div>
+
+    <form id="form-login">
+      <div class="form-field">
+        <label class="form-label" for="email">E-mail</label>
+        <input class="input" type="email" id="email" name="email"
+               placeholder="seu@email.com" required>
+      </div>
+
+      <div class="form-field">
+        <label class="form-label" for="senha">Senha</label>
+        <input class="input" type="password" id="senha" name="senha"
+               placeholder="••••••••" required>
+      </div>
+
+      <p id="login-erro" class="mensagem-erro" hidden></p>
+
+      <button class="btn btn-primary btn-bloco" type="submit">Entrar</button>
+    </form>
+
+    <p class="login-rodape">Não tem uma conta? <a href="#">Fale com o RH</a></p>
+  </main>
+
+  <footer class="rodape-pagina">© 2026 NIVELA. Todos os direitos reservados.</footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

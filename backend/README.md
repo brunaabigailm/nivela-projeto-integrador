@@ -15,6 +15,7 @@ A API foi desenvolvida utilizando Node.js com o framework Express, e realiza a c
 - **MySQL2** – biblioteca para conexão e consulta ao banco de dados.
 - **dotenv** – gerenciamento das variáveis de ambiente (dados de conexão).
 - **bcryptjs** – criptografia das senhas dos usuários antes de armazenar no banco.
+- **cors** – permite que o frontend acesse a API a partir de outra porta/origem.
 
 ---
 
@@ -59,7 +60,15 @@ O servidor estará disponível em `http://localhost:3000`.
 
 ## Rotas disponíveis
 
-A API está organizada em três grupos de rotas, cada um responsável por uma parte do sistema.
+A API está organizada em grupos de rotas, cada um responsável por uma parte do sistema.
+
+### Autenticação – `/api/login`
+
+Responsável pelo login dos usuários. Compara a senha digitada com o hash armazenado no banco.
+
+| Método | Rota | O que faz |
+|--------|------|-----------|
+| POST | `/api/login` | Autentica um usuário pelo e-mail e senha |
 
 ### Usuários – `/api/usuarios`
 
@@ -94,6 +103,18 @@ Responsável pelo registro e acompanhamento do progresso dos colaboradores nas t
 | GET | `/api/progresso/trilha/:id_usuario` | Retorna o progresso de um colaborador em suas trilhas |
 | POST | `/api/progresso/trilha` | Registra o início de um colaborador em uma trilha |
 | PUT | `/api/progresso/trilha/:id` | Atualiza o percentual de conclusão de uma trilha |
+
+### Áreas – `/api/areas`
+
+| Método | Rota | O que faz |
+|--------|------|-----------|
+| GET | `/api/areas` | Lista todas as áreas/departamentos cadastrados |
+
+### Cargos – `/api/cargos`
+
+| Método | Rota | O que faz |
+|--------|------|-----------|
+| GET | `/api/cargos` | Lista todos os cargos com o nome da área vinculada |
 
 ---
 
@@ -221,7 +242,10 @@ backend/
 ├── package.json       # Dependências e scripts do projeto
 ├── README.md          # Documentação do backend
 └── routes/
-    ├── usuarios.js    # Rotas de usuários
-    ├── trilhas.js     # Rotas de trilhas
-    └── progresso.js   # Rotas de progresso
+    ├── auth.js       # Rota de login (autenticação)
+    ├── usuarios.js   # Rotas de usuários
+    ├── trilhas.js    # Rotas de trilhas (com módulos)
+    ├── progresso.js  # Rotas de progresso
+    ├── areas.js      # Rota de listagem de áreas
+    └── cargos.js     # Rota de listagem de cargos
 ```

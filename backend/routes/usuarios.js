@@ -3,25 +3,34 @@ const router  = express.Router();
 const db      = require('../db');
 const bcrypt  = require('bcryptjs');
 
-// GET /api/usuarios — lista todos os usuários
+// GET /api/usuarios — lista todos os usuários (com nome do cargo)
 router.get('/', async (req, res) => {
   try {
-    const [rows] = await db.query(
-      'SELECT id_usuario, nome, email, tipo_usuario, status FROM usuario'
-    );
+    const [rows] = await db.query(`
+      SELECT u.id_usuario, u.nome, u.email, u.tipo_usuario, u.status,
+             u.id_empresa, u.id_area, u.id_cargo,
+             c.nome AS nome_cargo
+      FROM usuario u
+      LEFT JOIN cargo c ON u.id_cargo = c.id_cargo
+      ORDER BY u.id_usuario
+    `);
     res.json(rows);
   } catch (err) {
     res.status(500).json({ erro: 'Erro ao buscar usuários.', detalhe: err.message });
   }
 });
 
-// GET /api/usuarios/:id — busca usuário por ID
+// GET /api/usuarios/:id — busca usuário por ID (com nome do cargo)
 router.get('/:id', async (req, res) => {
   try {
-    const [rows] = await db.query(
-      'SELECT id_usuario, nome, email, tipo_usuario, status, id_empresa, id_area, id_cargo FROM usuario WHERE id_usuario = ?',
-      [req.params.id]
-    );
+    const [rows] = await db.query(`
+      SELECT u.id_usuario, u.nome, u.email, u.tipo_usuario, u.status,
+             u.id_empresa, u.id_area, u.id_cargo,
+             c.nome AS nome_cargo
+      FROM usuario u
+      LEFT JOIN cargo c ON u.id_cargo = c.id_cargo
+      WHERE u.id_usuario = ?
+    `, [req.params.id]);
     if (rows.length === 0) return res.status(404).json({ erro: 'Usuário não encontrado.' });
     res.json(rows[0]);
   } catch (err) {

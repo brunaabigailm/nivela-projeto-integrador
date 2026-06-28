@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIVELA — Painel do Gestor</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-marca">
+      <div class="login-logo">N</div>
+      <div class="topbar-textos">
+        <strong>NIVELA</strong>
+        <span>Painel do Gestor</span>
+      </div>
+    </div>
+    <div class="topbar-usuario">
+      <div class="topbar-textos topbar-textos-direita">
+        <strong id="usuario-nome">—</strong>
+        <span id="usuario-email">—</span>
+      </div>
+      <div class="topbar-avatar" id="usuario-avatar">?</div>
+      <button class="btn btn-secondary" id="btn-sair">Sair</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1 class="page-titulo">Bem-vindo de volta!</h1>
+    <p class="page-subtitulo">Gerencie colaboradores e trilhas de aprendizagem</p>
+
+    <section class="metricas-grid">
+      <article class="card metrica">
+        <div class="metrica-icone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <strong class="metrica-numero" id="metrica-colaboradores">—</strong>
+        <span class="metrica-label">Colaboradores Ativos</span>
+      </article>
+
+      <article class="card metrica">
+        <div class="metrica-icone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+        <strong class="metrica-numero" id="metrica-trilhas">—</strong>
+        <span class="metrica-label">Trilhas Criadas</span>
+      </article>
+
+      <article class="card metrica">
+        <div class="metrica-icone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+            <polyline points="16 7 22 7 22 13"/>
+          </svg>
+        </div>
+        <strong class="metrica-numero" id="metrica-conclusao">—</strong>
+        <span class="metrica-label">Taxa de Conclusão</span>
+      </article>
+
+      <article class="card metrica">
+        <div class="metrica-icone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="6"/>
+            <polyline points="8.21 13.89 7 22 12 19 17 22 15.79 13.88"/>
+          </svg>
+        </div>
+        <strong class="metrica-numero" id="metrica-certificados">—</strong>
+        <span class="metrica-label">Certificados Emitidos</span>
+      </article>
+    </section>
+
+    <section class="atalhos-grid">
+      <a class="card atalho atalho-destaque" href="cadastro-colaborador.html">
+        <div>
+          <h2>Cadastrar Colaborador</h2>
+          <p>Adicione um novo membro à equipe</p>
+        </div>
+        <div class="atalho-icone">+</div>
+      </a>
+      <a class="card atalho" href="criar-trilha.html">
+        <div>
+          <h2>Criar Trilha de Aprendizagem</h2>
+          <p>Configure novos programas de onboarding</p>
+        </div>
+        <div class="atalho-icone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
+        </div>
+      </a>
+    </section>
+
+    <section class="card">
+      <div class="tabela-cabecalho">
+        <h2>Colaboradores Recentes</h2>
+        <input class="input input-busca" placeholder="Buscar..." id="busca-colaborador">
+      </div>
+      <div class="tabela-rolavel">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Colaborador</th>
+              <th>Cargo</th>
+              <th>Progresso</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-colaboradores">
+            <tr><td colspan="4" class="tabela-vazia">Carregando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/dashboard-gestor.js"></script>
+</body>
+</html>

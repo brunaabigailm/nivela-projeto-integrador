@@ -36,22 +36,41 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// POST /api/trilhas — cria nova trilha
+// POST /api/trilhas — cria nova trilha (com módulos opcionais)
 router.post('/', async (req, res) => {
-  const { titulo, descricao, id_empresa, id_gestor, id_cargo } = req.body;
+  const { titulo, descricao, id_empresa, id_gestor, id_cargo, modulos } = req.body;
 
   if (!titulo || !id_empresa || !id_gestor) {
     return res.status(400).json({ erro: 'Campos obrigatórios: titulo, id_empresa, id_gestor.' });
   }
 
+  const conexao = await db.getConnection();
   try {
-    const [result] = await db.query(
+    await conexao.beginTransaction();
+
+    const [result] = await conexao.query(
       'INSERT INTO trilha (titulo, descricao, id_empresa, id_gestor, id_cargo) VALUES (?, ?, ?, ?, ?)',
       [titulo, descricao || null, id_empresa, id_gestor, id_cargo || null]
     );
-    res.status(201).json({ mensagem: 'Trilha criada com sucesso.', id_trilha: result.insertId });
+    const id_trilha = result.insertId;
+
+    if (Array.isArray(modulos) && modulos.length > 0) {
+      for (let i = 0; i < modulos.length; i++) {
+        const m = modulos[i];
+        await conexao.query(
+          'INSERT INTO modulo (id_trilha, titulo, descricao, tipo, duracao, ordem) VALUES (?, ?, ?, ?, ?, ?)',
+          [id_trilha, m.titulo, m.descricao || null, m.tipo || null, m.duracao || null, i + 1]
+        );
+      }
+    }
+
+    await conexao.commit();
+    res.status(201).json({ mensagem: 'Trilha criada com sucesso.', id_trilha });
   } catch (err) {
+    await conexao.rollback();
     res.status(500).json({ erro: 'Erro ao criar trilha.', detalhe: err.message });
+  } finally {
+    conexao.release();
   }
 });
 

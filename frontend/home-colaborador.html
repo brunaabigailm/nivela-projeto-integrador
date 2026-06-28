@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIVELA — Minha Jornada</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-marca">
+      <div class="login-logo">N</div>
+      <div class="topbar-textos">
+        <strong>NIVELA</strong>
+        <span>Minha Jornada de Aprendizado</span>
+      </div>
+    </div>
+    <div class="topbar-usuario">
+      <div class="topbar-textos topbar-textos-direita">
+        <strong id="usuario-nome">—</strong>
+        <span id="usuario-cargo">—</span>
+      </div>
+      <div class="topbar-avatar" id="usuario-avatar">?</div>
+      <button class="btn btn-secondary" id="btn-sair">Sair</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card boas-vindas">
+      <div class="boas-vindas-texto">
+        <h1 id="saudacao">Bem-vindo(a)!</h1>
+        <p>Continue sua jornada de onboarding. Você está progredindo muito bem!</p>
+        <div class="boas-vindas-progresso">
+          <span class="boas-vindas-label">Progresso Geral</span>
+          <strong id="progresso-geral">0%</strong>
+          <div class="barra-progresso boas-vindas-barra">
+            <span class="barra-progresso-preenchida" id="barra-geral" style="width: 0%"></span>
+          </div>
+        </div>
+      </div>
+      <div class="boas-vindas-icone">📖</div>
+    </section>
+
+    <section class="metricas-grid metricas-3">
+      <article class="card metrica">
+        <div class="metrica-icone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+        <strong class="metrica-numero" id="modulos-concluidos">0/0</strong>
+        <span class="metrica-label">Módulos Concluídos</span>
+      </article>
+      <article class="card metrica">
+        <div class="metrica-icone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <strong class="metrica-numero" id="horas-estudo">0h</strong>
+        <span class="metrica-label">Horas de Estudo</span>
+      </article>
+      <article class="card metrica">
+        <div class="metrica-icone">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="8" r="6"/>
+            <polyline points="8.21 13.89 7 22 12 19 17 22 15.79 13.88"/>
+          </svg>
+        </div>
+        <strong class="metrica-numero" id="certificados">0</strong>
+        <span class="metrica-label">Certificados</span>
+      </article>
+    </section>
+
+    <div class="home-grid">
+      <section class="card">
+        <h2 class="bloco-titulo">Continue de Onde Parou</h2>
+        <div id="modulo-atual" class="modulo-atual">
+          <div class="modulo-atual-thumb">📹</div>
+          <div class="modulo-atual-info">
+            <span class="tag">Carregando...</span>
+            <h3 id="modulo-atual-titulo">—</h3>
+            <p id="modulo-atual-meta">—</p>
+            <a class="btn btn-primary btn-bloco" href="avaliacao.html">▶ Continuar Assistindo</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2 class="bloco-titulo">📅 Minha Agenda</h2>
+        <ul class="agenda-lista">
+          <li>
+            <strong>Reunião com Gestor</strong>
+            <span>Hoje, 14:00</span>
+          </li>
+          <li>
+            <strong>Tour pelo Escritório</strong>
+            <span>Amanhã, 10:00</span>
+          </li>
+          <li>
+            <strong>Prazo Final — Quiz</strong>
+            <span>25 Mai, 17:00</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="home-grid">
+      <section class="card">
+        <h2 class="bloco-titulo">Próximos Módulos</h2>
+        <ul id="proximos-modulos" class="proximos-lista">
+          <li class="tabela-vazia">Carregando...</li>
+        </ul>
+      </section>
+
+      <section class="card dica-card">
+        <h2 class="bloco-titulo">💡 Dica do Dia</h2>
+        <p>Complete pelo menos um módulo por dia para manter seu ritmo de aprendizado e concluir o onboarding no prazo!</p>
+      </section>
+    </div>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/home-colaborador.js"></script>
+</body>
+</html>

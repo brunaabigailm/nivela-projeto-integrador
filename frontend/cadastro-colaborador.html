@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIVELA — Cadastrar Colaborador</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-marca">
+      <a class="botao-voltar" href="dashboard-gestor.html" aria-label="Voltar">←</a>
+      <div class="topbar-textos">
+        <strong>Cadastrar Colaborador</strong>
+        <span>Adicione um novo membro à equipe</span>
+      </div>
+    </div>
+    <div class="topbar-usuario">
+      <div class="topbar-textos topbar-textos-direita">
+        <strong id="usuario-nome">—</strong>
+        <span id="usuario-email">—</span>
+      </div>
+      <div class="topbar-avatar" id="usuario-avatar">?</div>
+      <button class="btn btn-secondary" id="btn-sair">Sair</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <form id="form-cadastro">
+      <section class="card form-secao">
+        <h2 class="form-secao-titulo">
+          <span class="form-secao-icone">👤</span>
+          Informações Pessoais
+        </h2>
+        <div class="form-grid">
+          <div class="form-field">
+            <label class="form-label" for="nome">Nome Completo *</label>
+            <input class="input" type="text" id="nome" name="nome"
+                   placeholder="Digite o nome completo" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="email">E-mail Corporativo *</label>
+            <input class="input" type="email" id="email" name="email"
+                   placeholder="colaborador@empresa.com" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="senha">Senha Inicial *</label>
+            <input class="input" type="password" id="senha" name="senha"
+                   placeholder="Mínimo 6 caracteres" minlength="6" required>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="telefone">Telefone</label>
+            <input class="input" type="tel" id="telefone" name="telefone"
+                   placeholder="(11) 99999-9999">
+          </div>
+        </div>
+      </section>
+
+      <section class="card form-secao">
+        <h2 class="form-secao-titulo">
+          <span class="form-secao-icone">💼</span>
+          Informações Profissionais
+        </h2>
+        <div class="form-grid">
+          <div class="form-field">
+            <label class="form-label" for="cargo">Cargo *</label>
+            <select class="input" id="cargo" name="cargo" required>
+              <option value="">Selecione um cargo</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label class="form-label" for="area">Departamento *</label>
+            <select class="input" id="area" name="area" required>
+              <option value="">Selecione um departamento</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <p id="cadastro-erro" class="mensagem-erro" hidden></p>
+      <p id="cadastro-sucesso" class="mensagem-sucesso" hidden></p>
+
+      <div class="form-acoes">
+        <a class="btn btn-secondary" href="dashboard-gestor.html">Cancelar</a>
+        <button class="btn btn-primary" type="submit">Cadastrar Colaborador</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="js/api.js"></script>
+  <script src="js/cadastro-colaborador.js"></script>
+</body>
+</html>

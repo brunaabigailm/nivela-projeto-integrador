@@ -32,35 +32,44 @@
 | 14/06/2026 | Versão inicial do banco de dados (DDL + DML) | ✅ Concluído | Scripts criados em `database/ddl.sql` e `database/dml.sql` |
 | 14/06/2026 | Versão inicial das telas (wireframes) | ✅ Concluído | 6 telas prototipadas com Figma Make em `evidencias/telas/` |
 | 14/06/2026 | Versão inicial da API backend | ✅ Concluído | API REST com Node.js + Express: CRUD de usuários, trilhas e progresso |
-| 15/06/2026 | Revisão do que foi implementado nas Etapas 1 e 2 | 🔲 Pendente | Balanço de itens concluídos e pendentes |
-| 18/06/2026 | Implementação das telas em HTML/CSS/JS | 🔲 Pendente | Codificação do frontend no repositório |
-| 21/06/2026 | Aprimoramento das APIs e banco de dados | 🔲 Pendente | Refinamento de endpoints, validações e segurança |
-| 24/06/2026 | Integração frontend e backend | 🔲 Pendente | Conexão das telas com as APIs |
-| 25/06/2026 | Testes das funcionalidades implementadas | 🔲 Pendente | Validação de todas as rotas e interfaces |
-| 26/06/2026 | Organização final do repositório e código-fonte | 🔲 Pendente | Revisão de legibilidade e boas práticas |
-| 27/06/2026 | Elaboração do documento de apresentação do projeto | 🔲 Pendente | Documento com objetivos, processos, tecnologias e desafios |
-| 27/06/2026 | Produção científica | 🔲 Pendente | Conforme orientação do professor em sala |
-| 28/06/2026 | Entrega final — Etapas 3 e 4 | 🔲 Pendente | Submissão no repositório + apresentação em PDF na plataforma |
+| 15/06/2026 | Revisão do que foi implementado nas Etapas 1 e 2 | ✅ Concluído | Balanço de itens concluídos e pendentes |
+| 18/06/2026 | Implementação das telas em HTML/CSS/JS | ✅ Concluído | Codificação do frontend no repositório |
+| 21/06/2026 | Aprimoramento das APIs e banco de dados | ✅ Concluído | Refinamento de endpoints, validações e segurança |
+| 24/06/2026 | Integração frontend e backend | ✅ Concluído | Conexão das telas com as APIs |
+| 25/06/2026 | Testes das funcionalidades implementadas | ✅ Concluído | Validação de todas as rotas e interfaces |
+| 26/06/2026 | Organização final do repositório e código-fonte | ✅ Concluído | Revisão de legibilidade e boas práticas |
+| 27/06/2026 | Elaboração do documento de apresentação do projeto | ✅ Concluído | Documento com objetivos, processos, tecnologias e desafios |
+| 27/06/2026 | Produção científica | ✅ Concluído | Conforme orientação do professor em sala |
+| 28/06/2026 | Entrega final — Etapas 3 e 4 | ✅ Concluído | Submissão no repositório + apresentação em PDF na plataforma |
 
 > O cronograma poderá ser ajustado conforme orientações do professor e evolução do desenvolvimento.
 
 ---
 
-## Escopo da Entrega Atual (Etapas 1 e 2)
+## Escopo da Entrega Atual (Etapas 1, 2, 3 e 4)
 
-A entrega atual contempla:
+A entrega final contempla:
 
 - Definição do escopo, problema e objetivos do sistema.
 - Levantamento de requisitos funcionais, não funcionais e regras de negócio.
 - Diagramas iniciais: Caso de Uso (UML), Sequência (UML) e MER (notação Chen).
 - Protótipo visual inicial com 6 telas principais (Figma Make).
-- Scripts de banco de dados: DDL (criação de 12 tabelas) e DML (dados de teste).
-- API REST inicial com Node.js e Express:
-  - CRUD completo de usuários.
-  - CRUD de trilhas com listagem de módulos.
+- Scripts de banco de dados: DDL (criação de 12 tabelas) e DML (dados de teste com senhas em bcrypt).
+- API REST com Node.js e Express:
+  - Autenticação via `POST /api/login` com comparação bcrypt.
+  - CRUD completo de usuários (com nome do cargo via JOIN).
+  - CRUD de trilhas com criação de múltiplos módulos em uma única operação (transação).
   - Registro e atualização de progresso em trilhas.
-  - Documentação dos endpoints com exemplos de uso.
-- Repositório GitHub organizado com documentação técnica (requisitos, banco de dados e planejamento).
+  - Listagem de áreas e cargos para dropdowns dinâmicos no frontend.
+  - CORS habilitado para permitir acesso a partir do frontend.
+- Frontend em HTML, CSS e JavaScript puros com 6 telas integradas à API:
+  - Login (`index.html`).
+  - Painel do Gestor com métricas em tempo real (`dashboard-gestor.html`).
+  - Cadastro de Colaborador (`cadastro-colaborador.html`).
+  - Criação de Trilha com módulos dinâmicos (`criar-trilha.html`).
+  - Home do Colaborador com progresso real (`home-colaborador.html`).
+  - Avaliação com 5 questões, timer regressivo e navegação rápida (`avaliacao.html`).
+- Repositório GitHub organizado com documentação técnica (requisitos, banco de dados, planejamento, READMEs de frontend e backend).
 
 ---
 

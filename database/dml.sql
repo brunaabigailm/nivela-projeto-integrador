@@ -14,11 +14,12 @@ INSERT INTO cargo (id_area, nome, descricao) VALUES
 (1, 'Desenvolvedor Júnior', 'Profissional em início de carreira na área de desenvolvimento.'),
 (2, 'Analista de Suporte', 'Profissional responsável pelo atendimento e suporte aos usuários.');
 
+-- Senhas armazenadas como hash bcrypt da string 'senha123'
 INSERT INTO usuario (id_empresa, id_area, id_cargo, nome, email, senha, tipo_usuario, status) VALUES
-(1, 1, 1, 'Marina Ribeiro', 'gestor@conecta.com', 'senha123', 'gestor', 'ativo'),
-(1, 1, 1, 'Ana Silva', 'ana.silva@conecta.com', 'senha123', 'colaborador', 'ativo'),
-(1, 2, 2, 'Carlos Souza', 'carlos.souza@conecta.com', 'senha123', 'colaborador', 'ativo'),
-(1, NULL, NULL, 'Administrador NIVELA', 'admin@nivela.com', 'senha123', 'administrador', 'ativo');
+(1, 1, 1, 'Marina Ribeiro', 'gestor@conecta.com', '$2a$10$NvdUTfk3H0XroAzaZIBTluS0q5g9AYY5R06MUhUh2s8.5w5wV.phe', 'gestor', 'ativo'),
+(1, 1, 1, 'Ana Silva', 'ana.silva@conecta.com', '$2a$10$NvdUTfk3H0XroAzaZIBTluS0q5g9AYY5R06MUhUh2s8.5w5wV.phe', 'colaborador', 'ativo'),
+(1, 2, 2, 'Carlos Souza', 'carlos.souza@conecta.com', '$2a$10$NvdUTfk3H0XroAzaZIBTluS0q5g9AYY5R06MUhUh2s8.5w5wV.phe', 'colaborador', 'ativo'),
+(1, NULL, NULL, 'Administrador NIVELA', 'admin@nivela.com', '$2a$10$NvdUTfk3H0XroAzaZIBTluS0q5g9AYY5R06MUhUh2s8.5w5wV.phe', 'administrador', 'ativo');
 
 INSERT INTO trilha (id_empresa, id_cargo, id_gestor, titulo, descricao, status) VALUES
 (1, 1, 1, 'Integração para Desenvolvedores', 'Trilha de onboarding para novos colaboradores da área de tecnologia.', 'ativa'),

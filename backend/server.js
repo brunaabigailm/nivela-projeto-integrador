@@ -1,18 +1,27 @@
 const express = require('express');
+const cors    = require('cors');
 const dotenv  = require('dotenv');
 dotenv.config();
 
 const app = express();
+// CORS aberto: ambiente acadêmico. Em produção, restringir com { origin: 'https://...' }.
+app.use(cors());
 app.use(express.json());
 
 // ── Rotas ─────────────────────────────────────────────────────────────────────
+const authRoutes      = require('./routes/auth');
 const usuariosRoutes  = require('./routes/usuarios');
 const trilhasRoutes   = require('./routes/trilhas');
 const progressoRoutes = require('./routes/progresso');
+const areasRoutes     = require('./routes/areas');
+const cargosRoutes    = require('./routes/cargos');
 
+app.use('/api',           authRoutes);
 app.use('/api/usuarios',  usuariosRoutes);
 app.use('/api/trilhas',   trilhasRoutes);
 app.use('/api/progresso', progressoRoutes);
+app.use('/api/areas',     areasRoutes);
+app.use('/api/cargos',    cargosRoutes);
 
 // ── Rota raiz (health check) ──────────────────────────────────────────────────
 app.get('/', (req, res) => {
@@ -21,6 +30,7 @@ app.get('/', (req, res) => {
     versao:  '1.0.0',
     status:  'online',
     rotas: [
+      'POST /api/login',
       'GET  /api/usuarios',
       'GET  /api/usuarios/:id',
       'POST /api/usuarios',
@@ -34,6 +44,8 @@ app.get('/', (req, res) => {
       'GET  /api/progresso/trilha/:id_usuario',
       'POST /api/progresso/trilha',
       'PUT  /api/progresso/trilha/:id',
+      'GET  /api/areas',
+      'GET  /api/cargos',
     ],
   });
 });

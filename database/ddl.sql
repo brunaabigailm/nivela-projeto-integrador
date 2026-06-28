@@ -64,6 +64,8 @@ CREATE TABLE modulo (
     id_trilha INT NOT NULL,
     titulo VARCHAR(150) NOT NULL,
     descricao TEXT,
+    tipo VARCHAR(50),
+    duracao VARCHAR(20),
     ordem INT,
     FOREIGN KEY (id_trilha) REFERENCES trilha(id_trilha)
 );
