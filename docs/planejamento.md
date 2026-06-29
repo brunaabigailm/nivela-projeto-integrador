@@ -36,11 +36,11 @@
 | 18/06/2026 | Implementação das telas em HTML/CSS/JS | ✅ Concluído | Codificação do frontend no repositório |
 | 21/06/2026 | Aprimoramento das APIs e banco de dados | ✅ Concluído | Refinamento de endpoints, validações e segurança |
 | 24/06/2026 | Integração frontend e backend | ✅ Concluído | Conexão das telas com as APIs |
-| 25/06/2026 | Testes das funcionalidades implementadas | ✅ Concluído | Validação de todas as rotas e interfaces |
+| 25/06/2026 | Testes das funcionalidades implementadas | ✅ Concluído | Validação manual das rotas e interfaces |
 | 26/06/2026 | Organização final do repositório e código-fonte | ✅ Concluído | Revisão de legibilidade e boas práticas |
-| 27/06/2026 | Elaboração do documento de apresentação do projeto | ✅ Concluído | Documento com objetivos, processos, tecnologias e desafios |
-| 27/06/2026 | Produção científica | ✅ Concluído | Conforme orientação do professor em sala |
-| 28/06/2026 | Entrega final — Etapas 3 e 4 | ✅ Concluído | Submissão no repositório + apresentação em PDF na plataforma |
+| 27/06/2026 | Elaboração do documento de apresentação do projeto | 🟡 Pendente | Documento de apresentação a refazer antes da entrega final |
+| 27/06/2026 | Produção científica | 🟡 Pendente | Material a finalizar conforme orientação do professor |
+| 28/06/2026 | Entrega final — Etapas 3 e 4 | 🟡 Em andamento | Código e evidências prontos; documentos de apresentação e submissão na plataforma ainda pendentes |
 
 > O cronograma poderá ser ajustado conforme orientações do professor e evolução do desenvolvimento.
 
@@ -68,7 +68,7 @@ A entrega final contempla:
   - Cadastro de Colaborador (`cadastro-colaborador.html`).
   - Criação de Trilha com módulos dinâmicos (`criar-trilha.html`).
   - Home do Colaborador com progresso real (`home-colaborador.html`).
-  - Avaliação com 5 questões, timer regressivo e navegação rápida (`avaliacao.html`).
+  - Avaliação com questões de múltipla escolha vindas do banco, timer regressivo e navegação rápida (`avaliacao.html`).
 - Repositório GitHub organizado com documentação técnica (requisitos, banco de dados, planejamento, READMEs de frontend e backend).
 
 ---

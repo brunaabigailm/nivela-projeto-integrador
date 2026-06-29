@@ -164,6 +164,7 @@ Arquivos disponíveis:
 
 - `ddl.sql`: responsável pela criação do banco de dados e das tabelas.
 - `dml.sql`: responsável pela inserção de dados iniciais para teste.
+- `migrations.sql`: responsável por ajustes adicionais aplicados após a versão inicial, incluindo alternativas das questões de avaliação.
 
 ## Observação
 
