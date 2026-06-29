@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" font-family="Arial, sans-serif" font-size="13">
+  <style>
+    .node { fill: #f3e8ff; stroke: #6d28d9; stroke-width: 2; }
+    .decision { fill: #fef3c7; stroke: #b45309; stroke-width: 2; }
+    .start-end { fill: #1f2937; stroke: #1f2937; }
+    .label { fill: #1f2937; text-anchor: middle; }
+    .label-white { fill: #ffffff; text-anchor: middle; font-weight: bold; }
+    .arrow { stroke: #1f2937; stroke-width: 1.5; fill: none; }
+    .arrow-label { fill: #1f2937; font-size: 11px; font-style: italic; }
+    .title { font-size: 16px; font-weight: bold; fill: #1f2937; text-anchor: middle; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1f2937"/>
+    </marker>
+  </defs>
+
+  <text x="350" y="30" class="title">Diagrama de Atividades — Fluxo do Colaborador</text>
+
+  <!-- Início -->
+  <ellipse cx="350" cy="70" rx="40" ry="18" class="start-end"/>
+  <text x="350" y="75" class="label-white">Início</text>
+
+  <!-- Login -->
+  <rect x="260" y="115" width="180" height="40" rx="8" class="node"/>
+  <text x="350" y="140" class="label">Realiza login</text>
+
+  <!-- Visualiza home -->
+  <rect x="260" y="185" width="180" height="40" rx="8" class="node"/>
+  <text x="350" y="210" class="label">Visualiza Home com progresso</text>
+
+  <!-- Decisão: tem trilha pendente? -->
+  <polygon points="350,255 460,310 350,365 240,310" class="decision"/>
+  <text x="350" y="305" class="label">Existe trilha em</text>
+  <text x="350" y="322" class="label">andamento?</text>
+
+  <!-- Encerra sessão -->
+  <rect x="500" y="290" width="170" height="40" rx="8" class="node"/>
+  <text x="585" y="315" class="label">Encerra sessão</text>
+
+  <!-- Acessa módulo -->
+  <rect x="260" y="395" width="180" height="40" rx="8" class="node"/>
+  <text x="350" y="420" class="label">Acessa módulo atual</text>
+
+  <!-- Inicia avaliação -->
+  <rect x="260" y="465" width="180" height="40" rx="8" class="node"/>
+  <text x="350" y="490" class="label">Inicia avaliação</text>
+
+  <!-- Responde questão -->
+  <rect x="260" y="535" width="180" height="40" rx="8" class="node"/>
+  <text x="350" y="560" class="label">Responde questão</text>
+
+  <!-- Decisão: última questão? -->
+  <polygon points="350,605 460,660 350,715 240,660" class="decision"/>
+  <text x="350" y="655" class="label">É a última</text>
+  <text x="350" y="672" class="label">questão?</text>
+
+  <!-- Decisão: aprovado? -->
+  <polygon points="350,755 460,810 350,865 240,810" class="decision"/>
+  <text x="350" y="805" class="label">Nota maior ou igual</text>
+  <text x="350" y="822" class="label">à mínima?</text>
+
+  <!-- Registra conclusão -->
+  <rect x="500" y="790" width="180" height="40" rx="8" class="node"/>
+  <text x="590" y="815" class="label">Registra conclusão</text>
+
+  <!-- Setas -->
+  <path d="M 350,88 L 350,115" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 350,155 L 350,185" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 350,225 L 350,255" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- Não tem trilha -> encerra -->
+  <path d="M 460,310 L 500,310" class="arrow" marker-end="url(#arrowhead)"/>
+  <text x="470" y="303" class="arrow-label">não</text>
+
+  <!-- Tem trilha -> acessa modulo -->
+  <path d="M 350,365 L 350,395" class="arrow" marker-end="url(#arrowhead)"/>
+  <text x="358" y="385" class="arrow-label">sim</text>
+
+  <path d="M 350,435 L 350,465" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 350,505 L 350,535" class="arrow" marker-end="url(#arrowhead)"/>
+  <path d="M 350,575 L 350,605" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- Última questão? Não -> volta pra responder -->
+  <path d="M 240,660 L 180,660 L 180,555 L 260,555" class="arrow" marker-end="url(#arrowhead)"/>
+  <text x="185" y="600" class="arrow-label">não</text>
+
+  <!-- Última questão? Sim -> avalia aprovação -->
+  <path d="M 350,715 L 350,755" class="arrow" marker-end="url(#arrowhead)"/>
+  <text x="358" y="745" class="arrow-label">sim</text>
+
+  <!-- Aprovado? Sim -> registra conclusão -->
+  <path d="M 460,810 L 500,810" class="arrow" marker-end="url(#arrowhead)"/>
+  <text x="470" y="803" class="arrow-label">sim</text>
+
+  <!-- Aprovado? Não -> volta para home -->
+  <path d="M 240,810 L 100,810 L 100,205 L 260,205" class="arrow" marker-end="url(#arrowhead)"/>
+  <text x="105" y="500" class="arrow-label">não</text>
+
+  <!-- Fim -->
+  <ellipse cx="590" cy="870" rx="40" ry="18" class="start-end"/>
+  <text x="590" y="875" class="label-white">Fim</text>
+  <path d="M 590,830 L 590,852" class="arrow" marker-end="url(#arrowhead)"/>
+
+  <!-- Linha de encerra para fim -->
+  <path d="M 585,330 L 585,360 L 590,360 L 590,852" stroke="#1f2937" stroke-width="1.5" fill="none" opacity="0"/>
+</svg>

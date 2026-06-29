@@ -1,0 +1,218 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 850" font-family="Arial, sans-serif" font-size="11">
+  <style>
+    .class-box { fill: #ffffff; stroke: #1f2937; stroke-width: 1.5; }
+    .class-header { fill: #6d28d9; }
+    .class-name { fill: #ffffff; font-weight: bold; text-anchor: middle; font-size: 12px; }
+    .attr { fill: #1f2937; }
+    .relation { stroke: #1f2937; stroke-width: 1.2; fill: none; }
+    .relation-label { fill: #1f2937; font-size: 10px; }
+    .title { font-size: 16px; font-weight: bold; fill: #1f2937; text-anchor: middle; }
+  </style>
+
+  <text x="550" y="25" class="title">Diagrama de Classes — Modelo NIVELA</text>
+
+  <!-- Empresa -->
+  <g transform="translate(40,55)">
+    <rect width="160" height="95" class="class-box"/>
+    <rect width="160" height="22" class="class-header"/>
+    <text x="80" y="16" class="class-name">Empresa</text>
+    <text x="8" y="38" class="attr">- id_empresa: int</text>
+    <text x="8" y="54" class="attr">- nome: string</text>
+    <text x="8" y="70" class="attr">- cnpj: string</text>
+    <text x="8" y="86" class="attr">- status: string</text>
+  </g>
+
+  <!-- Area -->
+  <g transform="translate(240,55)">
+    <rect width="160" height="80" class="class-box"/>
+    <rect width="160" height="22" class="class-header"/>
+    <text x="80" y="16" class="class-name">Area</text>
+    <text x="8" y="38" class="attr">- id_area: int</text>
+    <text x="8" y="54" class="attr">- nome: string</text>
+    <text x="8" y="70" class="attr">- descricao: string</text>
+  </g>
+
+  <!-- Cargo -->
+  <g transform="translate(440,55)">
+    <rect width="160" height="80" class="class-box"/>
+    <rect width="160" height="22" class="class-header"/>
+    <text x="80" y="16" class="class-name">Cargo</text>
+    <text x="8" y="38" class="attr">- id_cargo: int</text>
+    <text x="8" y="54" class="attr">- nome: string</text>
+    <text x="8" y="70" class="attr">- descricao: string</text>
+  </g>
+
+  <!-- Usuario -->
+  <g transform="translate(640,55)">
+    <rect width="180" height="125" class="class-box"/>
+    <rect width="180" height="22" class="class-header"/>
+    <text x="90" y="16" class="class-name">Usuario</text>
+    <text x="8" y="38" class="attr">- id_usuario: int</text>
+    <text x="8" y="54" class="attr">- nome: string</text>
+    <text x="8" y="70" class="attr">- email: string</text>
+    <text x="8" y="86" class="attr">- senha: string (bcrypt)</text>
+    <text x="8" y="102" class="attr">- tipo_usuario: string</text>
+    <text x="8" y="118" class="attr">- status: string</text>
+  </g>
+
+  <!-- Trilha -->
+  <g transform="translate(860,55)">
+    <rect width="200" height="125" class="class-box"/>
+    <rect width="200" height="22" class="class-header"/>
+    <text x="100" y="16" class="class-name">Trilha</text>
+    <text x="8" y="38" class="attr">- id_trilha: int</text>
+    <text x="8" y="54" class="attr">- titulo: string</text>
+    <text x="8" y="70" class="attr">- descricao: string</text>
+    <text x="8" y="86" class="attr">- status: string</text>
+    <text x="8" y="102" class="attr">- data_criacao: datetime</text>
+    <text x="8" y="118" class="attr">- id_gestor: int</text>
+  </g>
+
+  <!-- Modulo -->
+  <g transform="translate(40,210)">
+    <rect width="180" height="110" class="class-box"/>
+    <rect width="180" height="22" class="class-header"/>
+    <text x="90" y="16" class="class-name">Modulo</text>
+    <text x="8" y="38" class="attr">- id_modulo: int</text>
+    <text x="8" y="54" class="attr">- titulo: string</text>
+    <text x="8" y="70" class="attr">- tipo: string</text>
+    <text x="8" y="86" class="attr">- duracao: string</text>
+    <text x="8" y="102" class="attr">- ordem: int</text>
+  </g>
+
+  <!-- Conteudo -->
+  <g transform="translate(260,210)">
+    <rect width="180" height="110" class="class-box"/>
+    <rect width="180" height="22" class="class-header"/>
+    <text x="90" y="16" class="class-name">Conteudo</text>
+    <text x="8" y="38" class="attr">- id_conteudo: int</text>
+    <text x="8" y="54" class="attr">- titulo: string</text>
+    <text x="8" y="70" class="attr">- tipo_conteudo: string</text>
+    <text x="8" y="86" class="attr">- url_material: string</text>
+    <text x="8" y="102" class="attr">- ordem: int</text>
+  </g>
+
+  <!-- Avaliacao -->
+  <g transform="translate(480,210)">
+    <rect width="180" height="95" class="class-box"/>
+    <rect width="180" height="22" class="class-header"/>
+    <text x="90" y="16" class="class-name">Avaliacao</text>
+    <text x="8" y="38" class="attr">- id_avaliacao: int</text>
+    <text x="8" y="54" class="attr">- titulo: string</text>
+    <text x="8" y="70" class="attr">- descricao: string</text>
+    <text x="8" y="86" class="attr">- nota_minima: decimal</text>
+  </g>
+
+  <!-- Questao -->
+  <g transform="translate(700,210)">
+    <rect width="180" height="95" class="class-box"/>
+    <rect width="180" height="22" class="class-header"/>
+    <text x="90" y="16" class="class-name">Questao</text>
+    <text x="8" y="38" class="attr">- id_questao: int</text>
+    <text x="8" y="54" class="attr">- enunciado: string</text>
+    <text x="8" y="70" class="attr">- tipo_questao: string</text>
+    <text x="8" y="86" class="attr">- pontuacao: decimal</text>
+  </g>
+
+  <!-- Alternativa -->
+  <g transform="translate(900,210)">
+    <rect width="180" height="80" class="class-box"/>
+    <rect width="180" height="22" class="class-header"/>
+    <text x="90" y="16" class="class-name">Alternativa</text>
+    <text x="8" y="38" class="attr">- id_alternativa: int</text>
+    <text x="8" y="54" class="attr">- texto: string</text>
+    <text x="8" y="70" class="attr">- is_correta: boolean</text>
+  </g>
+
+  <!-- Resposta -->
+  <g transform="translate(40,360)">
+    <rect width="180" height="95" class="class-box"/>
+    <rect width="180" height="22" class="class-header"/>
+    <text x="90" y="16" class="class-name">Resposta</text>
+    <text x="8" y="38" class="attr">- id_resposta: int</text>
+    <text x="8" y="54" class="attr">- resposta: string</text>
+    <text x="8" y="70" class="attr">- nota_obtida: decimal</text>
+    <text x="8" y="86" class="attr">- data_resposta: datetime</text>
+  </g>
+
+  <!-- Progresso Trilha -->
+  <g transform="translate(260,360)">
+    <rect width="220" height="125" class="class-box"/>
+    <rect width="220" height="22" class="class-header"/>
+    <text x="110" y="16" class="class-name">ProgressoTrilha</text>
+    <text x="8" y="38" class="attr">- id_progresso_trilha: int</text>
+    <text x="8" y="54" class="attr">- percentual_conclusao: decimal</text>
+    <text x="8" y="70" class="attr">- status: string</text>
+    <text x="8" y="86" class="attr">- data_inicio: datetime</text>
+    <text x="8" y="102" class="attr">- data_conclusao: datetime</text>
+    <text x="8" y="118" class="attr">- id_usuario, id_trilha</text>
+  </g>
+
+  <!-- Progresso Conteudo -->
+  <g transform="translate(520,360)">
+    <rect width="200" height="95" class="class-box"/>
+    <rect width="200" height="22" class="class-header"/>
+    <text x="100" y="16" class="class-name">ProgressoConteudo</text>
+    <text x="8" y="38" class="attr">- id_prog_conteudo: int</text>
+    <text x="8" y="54" class="attr">- status: string</text>
+    <text x="8" y="70" class="attr">- data_visualizacao: datetime</text>
+    <text x="8" y="86" class="attr">- id_usuario, id_conteudo</text>
+  </g>
+
+  <!-- Linhas de relacionamento principais -->
+
+  <!-- Empresa 1 — N Area -->
+  <line x1="200" y1="95" x2="240" y2="95" class="relation"/>
+  <text x="210" y="90" class="relation-label">1..N</text>
+
+  <!-- Area 1 — N Cargo -->
+  <line x1="400" y1="95" x2="440" y2="95" class="relation"/>
+  <text x="410" y="90" class="relation-label">1..N</text>
+
+  <!-- Cargo 1 — N Usuario -->
+  <line x1="600" y1="95" x2="640" y2="95" class="relation"/>
+  <text x="610" y="90" class="relation-label">1..N</text>
+
+  <!-- Usuario 1 — N Trilha (gestor) -->
+  <line x1="820" y1="95" x2="860" y2="95" class="relation"/>
+  <text x="828" y="90" class="relation-label">cria</text>
+
+  <!-- Trilha 1 — N Modulo -->
+  <path d="M 960,180 L 960,280 L 220,280" class="relation"/>
+  <text x="930" y="270" class="relation-label">1..N</text>
+
+  <!-- Modulo 1 — N Conteudo -->
+  <line x1="220" y1="265" x2="260" y2="265" class="relation"/>
+  <text x="225" y="260" class="relation-label">1..N</text>
+
+  <!-- Trilha 1 — 1 Avaliacao -->
+  <path d="M 870,180 L 870,200 L 570,200 L 570,210" class="relation"/>
+  <text x="700" y="195" class="relation-label">1..1</text>
+
+  <!-- Avaliacao 1 — N Questao -->
+  <line x1="660" y1="257" x2="700" y2="257" class="relation"/>
+  <text x="665" y="252" class="relation-label">1..N</text>
+
+  <!-- Questao 1 — N Alternativa -->
+  <line x1="880" y1="250" x2="900" y2="250" class="relation"/>
+  <text x="884" y="245" class="relation-label">1..N</text>
+
+  <!-- Questao 1 — N Resposta -->
+  <path d="M 790,305 L 790,335 L 130,335 L 130,360" class="relation"/>
+  <text x="400" y="330" class="relation-label">1..N</text>
+
+  <!-- Usuario 1 — N ProgressoTrilha -->
+  <path d="M 730,180 L 730,345 L 370,345 L 370,360" class="relation"/>
+  <text x="500" y="340" class="relation-label">1..N</text>
+
+  <!-- Trilha 1 — N ProgressoTrilha -->
+  <path d="M 1000,180 L 1000,490 L 480,490 L 480,460" class="relation"/>
+  <text x="930" y="485" class="relation-label">1..N</text>
+
+  <!-- Conteudo 1 — N ProgressoConteudo -->
+  <path d="M 440,320 L 620,320 L 620,360" class="relation"/>
+  <text x="550" y="335" class="relation-label">1..N</text>
+
+  <text x="550" y="540" class="title" font-size="13">UNIQUE em ProgressoTrilha (id_usuario, id_trilha)</text>
+  <text x="550" y="560" text-anchor="middle" fill="#1f2937" font-size="11">impede o mesmo colaborador ser registrado duas vezes na mesma trilha</text>
+</svg>
