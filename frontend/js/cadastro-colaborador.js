@@ -68,7 +68,7 @@ async function enviarCadastro(evento) {
     nome:         document.getElementById('nome').value.trim(),
     email:        document.getElementById('email').value.trim(),
     senha:        document.getElementById('senha').value,
-    tipo_usuario: 'colaborador',
+    tipo_usuario: document.getElementById('tipo_usuario').value,
     id_empresa:   usuarioLogado.id_empresa,
     id_area:      Number(document.getElementById('area').value) || null,
     id_cargo:     Number(document.getElementById('cargo').value) || null,

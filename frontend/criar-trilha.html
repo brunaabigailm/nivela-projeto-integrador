@@ -71,6 +71,39 @@
         </p>
       </section>
 
+      <section class="card form-secao">
+        <div class="form-secao-cabecalho">
+          <h2 class="form-secao-titulo">
+            <span class="form-secao-icone">📝</span>
+            Avaliação Final (opcional)
+          </h2>
+          <button type="button" class="btn btn-secondary" id="btn-toggle-avaliacao">
+            + Adicionar Avaliação
+          </button>
+        </div>
+
+        <div id="avaliacao-conteudo" hidden>
+          <div class="form-grid">
+            <div class="form-field">
+              <label class="form-label" for="aval-titulo">Título da Avaliação</label>
+              <input class="input" type="text" id="aval-titulo" placeholder="Ex: Avaliação de Onboarding">
+            </div>
+            <div class="form-field">
+              <label class="form-label" for="aval-nota-minima">Nota Mínima</label>
+              <input class="input" type="number" id="aval-nota-minima" step="0.1" min="0" max="10" value="7.0">
+            </div>
+          </div>
+
+          <div class="form-secao-cabecalho" style="margin-top: var(--espaco-md);">
+            <h3 class="bloco-titulo" style="margin: 0;">Questões</h3>
+            <button type="button" class="btn btn-secondary" id="btn-adicionar-questao">
+              + Adicionar Questão
+            </button>
+          </div>
+          <div id="lista-questoes"></div>
+        </div>
+      </section>
+
       <p id="trilha-erro" class="mensagem-erro" hidden></p>
       <p id="trilha-sucesso" class="mensagem-sucesso" hidden></p>
 

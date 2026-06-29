@@ -57,10 +57,16 @@ router.post('/', async (req, res) => {
     if (Array.isArray(modulos) && modulos.length > 0) {
       for (let i = 0; i < modulos.length; i++) {
         const m = modulos[i];
-        await conexao.query(
+        const [rm] = await conexao.query(
           'INSERT INTO modulo (id_trilha, titulo, descricao, tipo, duracao, ordem) VALUES (?, ?, ?, ?, ?, ?)',
           [id_trilha, m.titulo, m.descricao || null, m.tipo || null, m.duracao || null, i + 1]
         );
+        if (m.url_material) {
+          await conexao.query(
+            'INSERT INTO conteudo (id_modulo, titulo, tipo_conteudo, url_material, ordem) VALUES (?, ?, ?, ?, ?)',
+            [rm.insertId, m.titulo, m.tipo || null, m.url_material, 1]
+          );
+        }
       }
     }
 

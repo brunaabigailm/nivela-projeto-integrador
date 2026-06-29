@@ -9,19 +9,23 @@ app.use(cors());
 app.use(express.json());
 
 // ── Rotas ─────────────────────────────────────────────────────────────────────
-const authRoutes      = require('./routes/auth');
-const usuariosRoutes  = require('./routes/usuarios');
-const trilhasRoutes   = require('./routes/trilhas');
-const progressoRoutes = require('./routes/progresso');
-const areasRoutes     = require('./routes/areas');
-const cargosRoutes    = require('./routes/cargos');
+const authRoutes       = require('./routes/auth');
+const usuariosRoutes   = require('./routes/usuarios');
+const trilhasRoutes    = require('./routes/trilhas');
+const progressoRoutes  = require('./routes/progresso');
+const areasRoutes      = require('./routes/areas');
+const cargosRoutes     = require('./routes/cargos');
+const conteudosRoutes  = require('./routes/conteudos');
+const avaliacoesRoutes = require('./routes/avaliacoes');
 
-app.use('/api',           authRoutes);
-app.use('/api/usuarios',  usuariosRoutes);
-app.use('/api/trilhas',   trilhasRoutes);
-app.use('/api/progresso', progressoRoutes);
-app.use('/api/areas',     areasRoutes);
-app.use('/api/cargos',    cargosRoutes);
+app.use('/api',            authRoutes);
+app.use('/api/usuarios',   usuariosRoutes);
+app.use('/api/trilhas',    trilhasRoutes);
+app.use('/api/progresso',  progressoRoutes);
+app.use('/api/areas',      areasRoutes);
+app.use('/api/cargos',     cargosRoutes);
+app.use('/api/conteudos',  conteudosRoutes);
+app.use('/api/avaliacoes', avaliacoesRoutes);
 
 // ── Rota raiz (health check) ──────────────────────────────────────────────────
 app.get('/', (req, res) => {
@@ -45,7 +49,13 @@ app.get('/', (req, res) => {
       'POST /api/progresso/trilha',
       'PUT  /api/progresso/trilha/:id',
       'GET  /api/areas',
+      'POST /api/areas',
       'GET  /api/cargos',
+      'POST /api/cargos',
+      'GET  /api/conteudos',
+      'POST /api/conteudos',
+      'GET  /api/avaliacoes/trilha/:id_trilha',
+      'POST /api/avaliacoes',
     ],
   });
 });

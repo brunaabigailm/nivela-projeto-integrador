@@ -634,6 +634,62 @@ textarea.input {
   margin-top: var(--espaco-md);
 }
 
+/* Módulo: campo de URL ocupa toda a largura abaixo dos demais */
+.modulo-url-field {
+  grid-column: 1 / -1;
+  margin-top: var(--espaco-xs);
+}
+
+/* === Questões da avaliação === */
+.questao-item {
+  padding: var(--espaco-md);
+  background-color: var(--cor-fundo);
+  border-radius: var(--raio-sm);
+  margin-bottom: var(--espaco-md);
+}
+
+.questao-cabecalho {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--espaco-sm);
+}
+
+.questao-cabecalho strong {
+  font-size: 14px;
+  color: var(--cor-primaria);
+}
+
+.questao-remover {
+  background: transparent;
+  color: var(--cor-erro);
+  padding: 4px 8px;
+  font-size: 16px;
+  border-radius: var(--raio-sm);
+}
+
+.questao-remover:hover {
+  background-color: var(--cor-primaria-clara);
+}
+
+.alternativa-input {
+  display: flex;
+  align-items: center;
+  gap: var(--espaco-sm);
+  margin-bottom: var(--espaco-xs);
+}
+
+.alternativa-input input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--cor-primaria);
+  flex-shrink: 0;
+}
+
+.alternativa-input .alt-texto {
+  flex: 1;
+}
+
 /* === Tela Home Colaborador === */
 .boas-vindas {
   display: flex;
@@ -741,7 +797,6 @@ textarea.input {
   margin-bottom: var(--espaco-sm);
 }
 
-.agenda-lista,
 .proximos-lista {
   list-style: none;
   display: flex;
@@ -749,7 +804,6 @@ textarea.input {
   gap: var(--espaco-sm);
 }
 
-.agenda-lista li,
 .proximos-lista li {
   background-color: var(--cor-primaria-clara);
   padding: var(--espaco-sm) var(--espaco-md);
@@ -758,11 +812,6 @@ textarea.input {
   flex-direction: column;
 }
 
-.agenda-lista li strong {
-  font-size: 14px;
-}
-
-.agenda-lista li span,
 .proximos-lista li span {
   font-size: 13px;
   color: var(--cor-texto-suave);

@@ -27,7 +27,7 @@ A interface se comunica com a API backend (Node.js + Express) via `fetch`, e arm
 | `cadastro-colaborador.html` | Cadastrar Colaborador | Formulário com áreas/cargos dinâmicos |
 | `criar-trilha.html` | Criar Trilha de Aprendizagem | Trilha + múltiplos módulos numa única operação |
 | `home-colaborador.html` | Jornada do Colaborador | Progresso geral, módulo atual, próximos módulos |
-| `avaliacao.html` | Avaliação | 5 questões de múltipla escolha com timer e navegação |
+| `avaliacao.html` | Avaliação | Questões de múltipla escolha vindas do banco, com timer e navegação |
 
 ---
 

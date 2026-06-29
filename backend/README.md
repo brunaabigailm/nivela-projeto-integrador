@@ -47,6 +47,7 @@ Antes de iniciar o servidor, é necessário executar os scripts SQL disponíveis
 ```bash
 mysql -u root -p < ../database/ddl.sql
 mysql -u root -p < ../database/dml.sql
+mysql -u root -p < ../database/migrations.sql
 ```
 
 **4. Iniciar o servidor**
@@ -109,12 +110,28 @@ Responsável pelo registro e acompanhamento do progresso dos colaboradores nas t
 | Método | Rota | O que faz |
 |--------|------|-----------|
 | GET | `/api/areas` | Lista todas as áreas/departamentos cadastrados |
+| POST | `/api/areas` | Cadastra uma nova área |
 
 ### Cargos – `/api/cargos`
 
 | Método | Rota | O que faz |
 |--------|------|-----------|
 | GET | `/api/cargos` | Lista todos os cargos com o nome da área vinculada |
+| POST | `/api/cargos` | Cadastra um novo cargo |
+
+### Conteúdos – `/api/conteudos`
+
+| Método | Rota | O que faz |
+|--------|------|-----------|
+| GET | `/api/conteudos` | Lista conteúdos cadastrados ou filtra por módulo |
+| POST | `/api/conteudos` | Cadastra um novo conteúdo em um módulo |
+
+### Avaliações – `/api/avaliacoes`
+
+| Método | Rota | O que faz |
+|--------|------|-----------|
+| GET | `/api/avaliacoes/trilha/:id_trilha` | Retorna a avaliação de uma trilha com questões e alternativas |
+| POST | `/api/avaliacoes` | Cria uma avaliação com questões e alternativas |
 
 ---
 
@@ -246,6 +263,8 @@ backend/
     ├── usuarios.js   # Rotas de usuários
     ├── trilhas.js    # Rotas de trilhas (com módulos)
     ├── progresso.js  # Rotas de progresso
-    ├── areas.js      # Rota de listagem de áreas
-    └── cargos.js     # Rota de listagem de cargos
+    ├── areas.js      # Rotas de áreas
+    ├── cargos.js     # Rotas de cargos
+    ├── conteudos.js  # Rotas de conteúdos
+    └── avaliacoes.js # Rotas de avaliações
 ```

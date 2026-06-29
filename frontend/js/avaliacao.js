@@ -1,4 +1,4 @@
-/* NIVELA — lógica da Avaliação */
+/* NIVELA — lógica da Avaliação (integrada ao banco) */
 
 const usuarioLogado = JSON.parse(localStorage.getItem('nivela_usuario') || 'null');
 
@@ -6,83 +6,76 @@ if (!usuarioLogado) {
   window.location.href = 'index.html';
 }
 
-const QUESTOES = [
-  {
-    enunciado: 'Qual é a missão principal da nossa empresa?',
-    alternativas: [
-      'Maximizar lucros a qualquer custo',
-      'Transformar a forma como as pessoas trabalham através da tecnologia',
-      'Ser a maior empresa do setor',
-      'Reduzir custos operacionais',
-    ],
-    correta: 1,
-  },
-  {
-    enunciado: 'Qual ferramenta usamos para gestão de tarefas?',
-    alternativas: ['Email', 'Planilha', 'Sistema interno de tickets', 'Não usamos ferramenta específica'],
-    correta: 2,
-  },
-  {
-    enunciado: 'Qual é o horário comercial padrão?',
-    alternativas: ['8h às 16h', '9h às 18h', '10h às 19h', '7h às 17h'],
-    correta: 1,
-  },
-  {
-    enunciado: 'Em caso de dúvidas, com quem devo falar primeiro?',
-    alternativas: ['Diretor', 'Meu gestor direto', 'Recursos Humanos', 'Colega de trabalho'],
-    correta: 1,
-  },
-  {
-    enunciado: 'Qual a política de home office?',
-    alternativas: [
-      'Não é permitido',
-      'Apenas em situações de emergência',
-      'Modelo híbrido com até 3 dias por semana',
-      'Totalmente remoto',
-    ],
-    correta: 2,
-  },
-];
-
+let avaliacaoCarregada = null;
+let questoes = [];
 let questaoAtual = 0;
-const respostas = new Array(QUESTOES.length).fill(null);
+let respostas = [];
 let tempoRestante = 10 * 60;
+let timerIntervalo = null;
 
 document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('total-questoes').textContent = QUESTOES.length;
   document.getElementById('btn-anterior').addEventListener('click', () => navegar(-1));
   document.getElementById('btn-proxima').addEventListener('click', () => navegar(1));
-  renderizar();
-  iniciarTimer();
+  carregarAvaliacao();
 });
 
+async function carregarAvaliacao() {
+  const params = new URLSearchParams(window.location.search);
+  const idTrilha = params.get('id_trilha') || 1;
+
+  try {
+    avaliacaoCarregada = await api('GET', `/api/avaliacoes/trilha/${idTrilha}`);
+    questoes = avaliacaoCarregada.questoes || [];
+
+    if (questoes.length === 0) {
+      mostrarSemQuestoes();
+      return;
+    }
+
+    respostas = new Array(questoes.length).fill(null);
+    document.getElementById('total-questoes').textContent = questoes.length;
+    renderizar();
+    iniciarTimer();
+  } catch (erro) {
+    mostrarSemQuestoes(erro.message);
+  }
+}
+
+function mostrarSemQuestoes(mensagem) {
+  document.getElementById('enunciado').textContent =
+    mensagem || 'Nenhuma avaliação disponível para esta trilha ainda.';
+  document.getElementById('alternativas').innerHTML = '';
+  document.getElementById('btn-proxima').disabled = true;
+  document.getElementById('btn-anterior').disabled = true;
+}
+
 function renderizar() {
-  const q = QUESTOES[questaoAtual];
+  const q = questoes[questaoAtual];
   document.getElementById('enunciado').textContent = q.enunciado;
 
-  const percentual = Math.round(((questaoAtual + 1) / QUESTOES.length) * 100);
+  const percentual = Math.round(((questaoAtual + 1) / questoes.length) * 100);
   document.getElementById('questao-atual').textContent = `Questão ${questaoAtual + 1}`;
   document.getElementById('percentual-questao').textContent = percentual + '%';
   document.getElementById('barra-avaliacao').style.width = percentual + '%';
 
   const containerAlt = document.getElementById('alternativas');
   containerAlt.innerHTML = q.alternativas.map((alt, i) => `
-    <label class="alternativa ${respostas[questaoAtual] === i ? 'selecionada' : ''}" data-i="${i}">
+    <label class="alternativa ${respostas[questaoAtual] === alt.id_alternativa ? 'selecionada' : ''}" data-id="${alt.id_alternativa}">
       <span class="alternativa-bola"></span>
-      <span>${alt}</span>
-      <input type="radio" name="resp" value="${i}" ${respostas[questaoAtual] === i ? 'checked' : ''}>
+      <span>${alt.texto}</span>
+      <input type="radio" name="resp" value="${alt.id_alternativa}" ${respostas[questaoAtual] === alt.id_alternativa ? 'checked' : ''}>
     </label>
   `).join('');
 
   containerAlt.querySelectorAll('.alternativa').forEach(el => {
     el.addEventListener('click', () => {
-      respostas[questaoAtual] = Number(el.dataset.i);
+      respostas[questaoAtual] = Number(el.dataset.id);
       renderizar();
     });
   });
 
   const navegacao = document.getElementById('navegacao-rapida');
-  navegacao.innerHTML = QUESTOES.map((_, i) => {
+  navegacao.innerHTML = questoes.map((_, i) => {
     let classe = '';
     if (i === questaoAtual) classe = 'ativa';
     else if (respostas[i] !== null) classe = 'respondida';
@@ -99,11 +92,11 @@ function renderizar() {
   document.getElementById('btn-anterior').disabled = questaoAtual === 0;
   const btnProxima = document.getElementById('btn-proxima');
   btnProxima.disabled = respostas[questaoAtual] === null;
-  btnProxima.textContent = questaoAtual === QUESTOES.length - 1 ? 'Finalizar' : 'Próxima';
+  btnProxima.textContent = questaoAtual === questoes.length - 1 ? 'Finalizar' : 'Próxima';
 }
 
 function navegar(delta) {
-  if (delta === 1 && questaoAtual === QUESTOES.length - 1) {
+  if (delta === 1 && questaoAtual === questoes.length - 1) {
     finalizar();
     return;
   }
@@ -112,12 +105,19 @@ function navegar(delta) {
 }
 
 function finalizar() {
-  const acertos = respostas.filter((r, i) => r === QUESTOES[i].correta).length;
-  const nota = ((acertos / QUESTOES.length) * 10).toFixed(1);
-  const aprovado = nota >= 7;
+  if (timerIntervalo) clearInterval(timerIntervalo);
+
+  const acertos = respostas.filter((idAlt, i) => {
+    const correta = questoes[i].alternativas.find(a => a.is_correta === 1 || a.is_correta === true);
+    return correta && idAlt === correta.id_alternativa;
+  }).length;
+
+  const nota = ((acertos / questoes.length) * 10).toFixed(1);
+  const notaMinima = Number(avaliacaoCarregada.nota_minima) || 7;
+  const aprovado = Number(nota) >= notaMinima;
 
   const msg = document.getElementById('avaliacao-mensagem');
-  msg.textContent = `Avaliação concluída! Você acertou ${acertos} de ${QUESTOES.length} (nota ${nota}). ${aprovado ? '✅ Aprovado!' : '❌ Não atingiu a nota mínima.'}`;
+  msg.textContent = `Avaliação concluída! Você acertou ${acertos} de ${questoes.length} (nota ${nota}). ${aprovado ? '✅ Aprovado!' : '❌ Não atingiu a nota mínima de ' + notaMinima + '.'}`;
   msg.style.color = aprovado ? 'var(--cor-sucesso)' : 'var(--cor-erro)';
   msg.hidden = false;
   setTimeout(() => { window.location.href = 'home-colaborador.html'; }, 3000);
@@ -125,10 +125,10 @@ function finalizar() {
 
 function iniciarTimer() {
   const el = document.getElementById('timer');
-  const intervalo = setInterval(() => {
+  timerIntervalo = setInterval(() => {
     tempoRestante -= 1;
     if (tempoRestante <= 0) {
-      clearInterval(intervalo);
+      clearInterval(timerIntervalo);
       finalizar();
       return;
     }
