@@ -99,6 +99,14 @@ CREATE TABLE questao (
     FOREIGN KEY (id_avaliacao) REFERENCES avaliacao(id_avaliacao)
 );
 
+CREATE TABLE alternativa (
+    id_alternativa INT AUTO_INCREMENT PRIMARY KEY,
+    id_questao INT NOT NULL,
+    texto TEXT NOT NULL,
+    is_correta TINYINT(1) DEFAULT 0,
+    FOREIGN KEY (id_questao) REFERENCES questao(id_questao)
+);
+
 CREATE TABLE resposta (
     id_resposta INT AUTO_INCREMENT PRIMARY KEY,
     id_questao INT NOT NULL,
@@ -118,6 +126,7 @@ CREATE TABLE progresso_trilha (
     status VARCHAR(30) DEFAULT 'em andamento',
     data_inicio DATETIME DEFAULT CURRENT_TIMESTAMP,
     data_conclusao DATETIME,
+    UNIQUE KEY uk_progresso_usuario_trilha (id_usuario, id_trilha),
     FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
     FOREIGN KEY (id_trilha) REFERENCES trilha(id_trilha)
 );

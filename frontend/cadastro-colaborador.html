@@ -48,11 +48,6 @@
             <input class="input" type="password" id="senha" name="senha"
                    placeholder="Mínimo 6 caracteres" minlength="6" required>
           </div>
-          <div class="form-field">
-            <label class="form-label" for="telefone">Telefone</label>
-            <input class="input" type="tel" id="telefone" name="telefone"
-                   placeholder="(11) 99999-9999">
-          </div>
         </div>
       </section>
 
@@ -62,6 +57,14 @@
           Informações Profissionais
         </h2>
         <div class="form-grid">
+          <div class="form-field">
+            <label class="form-label" for="tipo_usuario">Tipo de Usuário *</label>
+            <select class="input" id="tipo_usuario" name="tipo_usuario" required>
+              <option value="colaborador">Colaborador</option>
+              <option value="gestor">Gestor</option>
+              <option value="administrador">Administrador</option>
+            </select>
+          </div>
           <div class="form-field">
             <label class="form-label" for="cargo">Cargo *</label>
             <select class="input" id="cargo" name="cargo" required>

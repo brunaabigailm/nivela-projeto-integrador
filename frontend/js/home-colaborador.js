@@ -47,7 +47,7 @@ async function carregarJornada() {
 
     atualizarBarraProgresso(percentualAtual);
     atualizarMetricas(concluidos, totalModulos, modulos, progressos);
-    atualizarModuloAtual(modulos[concluidos] || modulos[0], percentualAtual, trilhaCompleta.titulo);
+    atualizarModuloAtual(modulos[concluidos], percentualAtual, trilhaCompleta.titulo, trilhaAtual.id_trilha);
     atualizarProximosModulos(modulos.slice(concluidos + 1));
   } catch (erro) {
     console.error(erro);
@@ -71,7 +71,7 @@ function atualizarMetricas(concluidos, total, modulos, progressos) {
   document.getElementById('certificados').textContent = certificados;
 }
 
-function atualizarModuloAtual(modulo, percentual, tituloTrilha) {
+function atualizarModuloAtual(modulo, percentual, tituloTrilha, idTrilha) {
   const container = document.getElementById('modulo-atual');
   if (!modulo) {
     container.innerHTML = '<p>Você já concluiu todos os módulos! 🎉</p>';
@@ -83,6 +83,9 @@ function atualizarModuloAtual(modulo, percentual, tituloTrilha) {
   document.getElementById('modulo-atual-titulo').textContent = modulo.titulo;
   document.getElementById('modulo-atual-meta').textContent =
     `${modulo.duracao || '—'} • ${Math.round(percentual)}% concluído • ${tituloTrilha}`;
+
+  const link = container.querySelector('a.btn');
+  if (link) link.href = `avaliacao.html?id_trilha=${idTrilha}`;
 }
 
 function atualizarProximosModulos(modulos) {

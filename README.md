@@ -16,8 +16,8 @@ Desenvolver uma solução web que permita estruturar o processo de integração 
 - Painel do gestor com métricas em tempo real, atalhos e tabela de colaboradores com busca.
 - Cadastro de colaboradores com seleção dinâmica de cargo e área.
 - Criação de trilhas de aprendizagem com múltiplos módulos numa única operação.
-- Jornada do colaborador com progresso real, módulo atual, próximos módulos e agenda.
-- Avaliação interativa com 5 questões de múltipla escolha, timer regressivo e navegação rápida.
+- Jornada do colaborador com progresso real, módulo atual e próximos módulos.
+- Avaliação interativa com questões de múltipla escolha vindas do banco, timer regressivo e navegação rápida.
 
 ## Tecnologias utilizadas
 
@@ -42,8 +42,9 @@ nivela-projeto-integrador/
 ├── frontend/                      # HTML, CSS, JS (6 telas)
 ├── backend/                       # API Node.js + Express
 ├── database/
-│   ├── ddl.sql                    # Criação das 12 tabelas
-│   └── dml.sql                    # Dados de teste (senhas em bcrypt)
+│   ├── ddl.sql                    # Criação das tabelas
+│   ├── dml.sql                    # Dados de teste (senhas em bcrypt)
+│   └── migrations.sql             # Ajustes adicionais e alternativas das avaliações
 └── README.md
 ```
 
@@ -54,7 +55,7 @@ nivela-projeto-integrador/
 - XAMPP com MySQL iniciado
 
 ### Passos
-1. **Criar o banco e popular com dados de teste** — abra o phpMyAdmin (`localhost/phpmyadmin`), crie o banco `nivela_db`, e execute na aba SQL os scripts `database/ddl.sql` e `database/dml.sql`.
+1. **Criar o banco e popular com dados de teste** — abra o phpMyAdmin (`localhost/phpmyadmin`), crie o banco `nivela_db`, e execute na aba SQL os scripts `database/ddl.sql`, `database/dml.sql` e `database/migrations.sql`, nessa ordem.
 2. **Configurar e iniciar o backend:**
    ```bash
    cd backend
