@@ -48,6 +48,7 @@ app.get('/', (req, res) => {
       'GET  /api/progresso/trilha/:id_usuario',
       'POST /api/progresso/trilha',
       'PUT  /api/progresso/trilha/:id',
+      'POST /api/progresso/trilha/concluir',
       'GET  /api/areas',
       'POST /api/areas',
       'GET  /api/cargos',

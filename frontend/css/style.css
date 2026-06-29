@@ -751,7 +751,7 @@ textarea.input {
 
 .home-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: var(--espaco-md);
   margin-bottom: var(--espaco-md);
 }
@@ -795,6 +795,33 @@ textarea.input {
   font-size: 14px;
   color: var(--cor-texto-suave);
   margin-bottom: var(--espaco-sm);
+}
+
+.modulo-concluido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--espaco-lg) var(--espaco-md);
+  gap: var(--espaco-sm);
+}
+
+.modulo-concluido-emoji {
+  font-size: 64px;
+  line-height: 1;
+}
+
+.modulo-concluido h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--cor-primaria);
+}
+
+.modulo-concluido p {
+  font-size: 14px;
+  color: var(--cor-texto-suave);
+  max-width: 460px;
 }
 
 .proximos-lista {

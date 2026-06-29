@@ -104,6 +104,7 @@ Responsável pelo registro e acompanhamento do progresso dos colaboradores nas t
 | GET | `/api/progresso/trilha/:id_usuario` | Retorna o progresso de um colaborador em suas trilhas |
 | POST | `/api/progresso/trilha` | Registra o início de um colaborador em uma trilha |
 | PUT | `/api/progresso/trilha/:id` | Atualiza o percentual de conclusão de uma trilha |
+| POST | `/api/progresso/trilha/concluir` | Marca a trilha como concluída (cria ou atualiza o registro de progresso) |
 
 ### Áreas – `/api/areas`
 

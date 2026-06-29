@@ -59,4 +59,28 @@ router.put('/trilha/:id', async (req, res) => {
   }
 });
 
+// POST /api/progresso/trilha/concluir — marca uma trilha como concluída (cria ou atualiza)
+router.post('/trilha/concluir', async (req, res) => {
+  const { id_usuario, id_trilha } = req.body;
+
+  if (!id_usuario || !id_trilha) {
+    return res.status(400).json({ erro: 'Campos obrigatórios: id_usuario, id_trilha.' });
+  }
+
+  try {
+    await db.query(
+      `INSERT INTO progresso_trilha (id_usuario, id_trilha, percentual_conclusao, status, data_conclusao)
+       VALUES (?, ?, 100, 'concluido', CURRENT_TIMESTAMP)
+       ON DUPLICATE KEY UPDATE
+         percentual_conclusao = 100,
+         status = 'concluido',
+         data_conclusao = CURRENT_TIMESTAMP`,
+      [id_usuario, id_trilha]
+    );
+    res.json({ mensagem: 'Trilha marcada como concluída.' });
+  } catch (err) {
+    res.status(500).json({ erro: 'Erro ao concluir trilha.', detalhe: err.message });
+  }
+});
+
 module.exports = router;

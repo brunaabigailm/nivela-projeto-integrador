@@ -104,7 +104,7 @@ function navegar(delta) {
   renderizar();
 }
 
-function finalizar() {
+async function finalizar() {
   if (timerIntervalo) clearInterval(timerIntervalo);
 
   const acertos = respostas.filter((idAlt, i) => {
@@ -120,6 +120,18 @@ function finalizar() {
   msg.textContent = `Avaliação concluída! Você acertou ${acertos} de ${questoes.length} (nota ${nota}). ${aprovado ? '✅ Aprovado!' : '❌ Não atingiu a nota mínima de ' + notaMinima + '.'}`;
   msg.style.color = aprovado ? 'var(--cor-sucesso)' : 'var(--cor-erro)';
   msg.hidden = false;
+
+  if (aprovado) {
+    try {
+      await api('POST', '/api/progresso/trilha/concluir', {
+        id_usuario: usuarioLogado.id_usuario,
+        id_trilha:  avaliacaoCarregada.id_trilha,
+      });
+    } catch (erro) {
+      console.error('Erro ao registrar conclusão:', erro);
+    }
+  }
+
   setTimeout(() => { window.location.href = 'home-colaborador.html'; }, 3000);
 }
 

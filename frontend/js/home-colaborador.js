@@ -74,7 +74,13 @@ function atualizarMetricas(concluidos, total, modulos, progressos) {
 function atualizarModuloAtual(modulo, percentual, tituloTrilha, idTrilha) {
   const container = document.getElementById('modulo-atual');
   if (!modulo) {
-    container.innerHTML = '<p>Você já concluiu todos os módulos! 🎉</p>';
+    container.classList.remove('modulo-atual');
+    container.classList.add('modulo-concluido');
+    container.innerHTML = `
+      <div class="modulo-concluido-emoji">🎉</div>
+      <h3>Trilha concluída!</h3>
+      <p>Você finalizou todos os módulos de <strong>${tituloTrilha}</strong>. Parabéns pela conquista!</p>
+    `;
     return;
   }
   const tag = container.querySelector('.tag');
